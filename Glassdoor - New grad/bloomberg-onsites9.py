@@ -1,7 +1,17 @@
 #Question 1
 # Print the top 10 largest elements from integer array. 
 # Follow up to top K
+def topElements(arr):
+    pass
+#first implement solution for top 10
 
+#follow-up: top K --> use Heap 
+
+
+#time complexity:
+#space complexity:
+
+# *********************************************************************************************************
 # Question 2
 # Given a string, rearrange it in decreasing order by the characters frequency and in lexicographical order if their frequency is equal.
 from collections import Counter
