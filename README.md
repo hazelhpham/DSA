@@ -5,10 +5,15 @@
 
   Sept 25th ? : Applied online
   October 10th: Bloomberg sent me private interest form and private link to apply
+  
   October 25th: Bloomberg responded and gave me the link for me to schedule the interview
+  
   November 15th: Phone interview
-  Nov 26th: Recruiter responded and moved me to onsite. 
+  
+  Nov 26th: Recruiter responded and moved me to onsite.
+  
   Dec 10th - Dec 13th: Onsite interview / Superday
+  
 
   Will keep you updated.
   Will write about my interview process once I am completely done and receive my final result. 
