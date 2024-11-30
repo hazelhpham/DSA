@@ -1,0 +1,1 @@
+#Q1: Using principles of OOP, lets design the game of chess.

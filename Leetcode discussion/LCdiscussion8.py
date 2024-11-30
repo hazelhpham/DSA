@@ -40,3 +40,24 @@ The task of design interview was to create a program which would stream data fro
 External data provider sends info about trades being done on stock exchange. Other applications are run as separate processes on the same machine, they can ask your program to send them data about exchange data on certain stock. The main questions of the design were about how to transfer data from your process to other processes, how to support streaming of data of multiple stocks. There were also extra questions about what to do when other processes that queried data die, how do you manage the state of the application. There was no coding in my system design interview, 
 we have just discussed different approaches to the problem and I drawed my solution on paper.
 """
+
+
+
+#Q3:
+"""
+I had this problem on my interview with Bloomberg.
+
+
+Design a mailbox which should do the two functions:
+
+
+send a message.
+retrieve all messages of a user.
+After I finished the requirements, he asked me to extend the code to provide these two functions:
+
+
+send an error message if a receiver doesn't exist.
+send one message to multiple users.
+The problem was very straighforward and easy. I was able to communicate my thoughts and ideas with the interviewer. But after I finished the interview, and I felt that I will proceed to the next stage, I realized that my code could be better and improved. I guess the time constraint of the interview, and the overall stress were playing against me.
+For example: (1) create a new class to save users, and make it a singelton class which has a set to store the users. (2) have a methods which validates if a user exists or not.
+"""

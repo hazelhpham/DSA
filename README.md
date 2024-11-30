@@ -14,6 +14,11 @@
 *From the interview process, I clearly realized that the leetcode questions made only half of the process. The interviewers asked many questions related to specific concepts like C++, networking, OS. I had read few books on these topics, so I managed to answer about 70% of the questions. I also clearly stated the things I didn't know about. For them I tried to come up with an answer on the fly while explaining my reasoning to the interviewer.*
 
 *My general advice would be to balance your interview preparation schedule by reading some articles / books / video on subjects you don't know about, at least you'll have a mild understanding and the interviewer will score it as 50%. Of course, you have to ace leetcode, no questions asked, but it is only a necessary condition, not sufficient one (at least for my Bloomberg interviews).*
+
+
+*Pretty standard leet code medium and easy. Bloomberg cares more about soft skills more than most big tech companies so be prepared to answer why you want to work at Bloomberg etc. And be able to communicate well.*
+
+
 # Timeline interview:
 
   * Sept 25th ? : Applied online

@@ -5,7 +5,15 @@
 #Q2: Min stack
 
 #Q3: How to implement a shuffle linked list
-
+import random
+class ListNode:
+    def __init__(self, value=0, next=None):
+        self.val = value
+        self.next = next 
+    def shuffleLinkedList(head):
+        if not head:
+            return None
+        
 #Q4: build a stock class where you can get the last stock added to portfolio
 
 #Q5: depth first search for a binary tree that had no limit of leaves for each level.

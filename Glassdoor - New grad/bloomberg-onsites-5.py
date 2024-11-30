@@ -1,4 +1,5 @@
-#Question 40:Design AutoComplete search feature LC Medium
+#Question 40:
+# Design AutoComplete search feature LC Medium
 # A problem Graph and Tree
 
 #Question 41:
@@ -13,7 +14,6 @@
 
 #Question 44: Give some routes, print all the paths from start airport to destination airport.
 
-#Question 45: Count islands problem 
 # Question 46: Validate binary search tree
 
 
@@ -31,7 +31,8 @@ Iâ€™d rather not answer questions about my specific interview experience cus itâ
 
 #Question 48: Coin change
 
-#Question 49:Phone: 1. BST in min-max fashion Onsite: 
+#Question 49:
+# 1. BST in min-max fashion Onsite: 
 # 1. Variation of Insert Delete GetRandom O(1) on a different class (OOP style) 
 # 2. System Design on browser history
 

@@ -106,7 +106,6 @@ def longestNoRepeating(s):
 
 #Q19: How you optimize {project function} to handle large amount of requests at same time, give me a optimized solution
 
-#Q20: neetcode 150 + bloomberg tagged on leetcode.
 
 #Q21: Given two string, how to tell if they are anagram? (https://leetcode.com/problems/valid-anagram/)
 # * Follow up questions:
