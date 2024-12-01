@@ -7,7 +7,6 @@ class Deque:
 # Q3: Dp problem dividing N oranges
 # --> LeetCode 279: Perfect Squares
 
-# Q4: vertical order traversal
 
 # ********************************************************************************************************
 
@@ -58,3 +57,36 @@ def comp(s):
 # Example 1:
 # Inout: ["indigo", "charisma", "hotel"]
 # Output: ["hotel", "charisma", "indigo"]
+
+def custom_sort_key(word):
+    # Create a dictionary for custom order
+    order = {chr(i): i-97 for i in range(97, 123)}  # 'a' to 'z'
+    order['ch'] = 8  # 'ch' comes between 'h' and 'i'
+    
+    # Helper function to return a custom sort key based on the character positions
+    def custom_order(c):
+        if c == "ch":  # Handle "ch" as a special case
+            return order[c]
+        return order.get(c, -1)
+    
+    # We split the word by the custom rule, where we treat "ch" as a single character
+    i = 0
+    custom_key = []
+    while i < len(word):
+        if i + 1 < len(word) and word[i:i+2] == 'ch':  # Check for 'ch'
+            custom_key.append("ch")
+            i += 2  # Skip next character after "ch"
+        else:
+            custom_key.append(word[i])
+            i += 1
+    
+    return [custom_order(c) for c in custom_key]
+
+def sort_words(words):
+    # Sort the words using the custom sort order
+    return sorted(words, key=custom_sort_key)
+
+# Example usage
+words = ["indigo", "charisma", "hotel"]
+sorted_words = sort_words(words)
+print(sorted_words)  # Output: ["hotel", "charisma", "indigo"]
