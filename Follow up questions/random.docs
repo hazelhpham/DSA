@@ -1,0 +1,22 @@
+1. import random
+arr = [1,2,3,4,5]
+random.shuffle(arr)
+print(arr) #this will return a randomly shuffled list
+
+2. random.sample()
+
+import random
+my_list = [1,2,3,4,5]
+shuffled_list = random.sample(my_list, len(my_list))
+print(shuffled_list)
+
+3. random.choice()
+
+import random
+my_list = [1,2,3,4,5]
+shuffled_list = []
+while my_list:
+    new_element = random.choice(my_list)
+    shuffled_list.append(new_element)
+    my_list.remove(new_element)
+print(shuffled_list)

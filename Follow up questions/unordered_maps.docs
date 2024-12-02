@@ -1,0 +1,53 @@
+1. what is ordered map?
+from collections import OrderedDict
+
+# Initialize an ordered map (OrderedDict)
+ordered_map = OrderedDict()
+
+# Adding elements
+ordered_map[1] = "one"
+ordered_map[2] = "two"
+ordered_map[3] = "three"
+
+# Accessing values using keys
+print("Key 1:", ordered_map[1])  # Output: one
+print("Key 2:", ordered_map[2])  # Output: two
+
+# Iterating through keys (order is maintained)
+print("\nIterating over ordered_map:")
+for key, value in ordered_map.items():
+    print(f"{key}: {value}")
+
+# Deleting a key
+del ordered_map[2]
+print("\nAfter deleting key 2:", ordered_map)
+
+# Adding an element again
+ordered_map[4] = "four"
+print("\nAfter adding key 4:", ordered_map)
+
+
+2. what is un-ordered map?
+
+# Unordered Map using Python's built-in dict
+
+# Initialize an unordered map (dictionary)
+unordered_map = {}
+
+# Adding elements
+unordered_map[1] = "one"
+unordered_map[2] = "two"
+unordered_map[3] = "three"
+
+# Accessing values using keys
+print("Key 1:", unordered_map[1])  # Output: one
+print("Key 2:", unordered_map[2])  # Output: two
+
+# Iterating through keys (order is not guaranteed)
+print("\nIterating over unordered_map:")
+for key, value in unordered_map.items():
+    print(f"{key}: {value}")
+
+# Deleting a key
+del unordered_map[2]
+print("\nAfter deleting key 2:", unordered_map)

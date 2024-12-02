@@ -1,0 +1,32 @@
+What is hashing?
+- Hashing is a technique used in CS to map data
+to fixed-size values
+- This is typically done through a hash function that takes
+an input (like a string or number) and produces a hash code 
+
+e.g:
+
+hash(value % table_sizes)
+
+What is collision?
+- A collision happens when 2 different values hash
+to the same index in the array or table. 
+---> Solution to fix collision:
+1. open addressing
+- when a collision happens, find the next available position
+in the array (by probing) to store the new value 
+- linear probing: if a collision occurs, move to the next position
+and check if its free
+
+def linear_probing(hash_table, value, table_size):
+    index = simple_hash(value, table_size)
+    while hash_table[index] is not None:
+        index = (index+1)% table_size
+    hash_table[index] = value
+--> better in terms of space complexity 
+
+2. create a linked list
+
+--> for large datasets, chaining often works better
+because the hash table does not have to be re-sized as frequently,
+and you can use more efficient structures for linked list. 

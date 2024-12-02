@@ -1,6 +1,10 @@
 # Q1:
 # Given an array of stock prices, return the range within k days (each index in array is stock price for day).
-# Above was what we worked with along with some scratch code as it seemed simple enough and he agreed with. The problem came with the follow up, he asked what if the stock array was updated everyday, how could we improve the time complexity? I could not for the life of me figure it out and eventually he told me that we could use a BST to find the lowest and the max in O(1) time (we can use set in c++ as it is implemented as a BST). Since inserting an entry would only be O(log n), the total time complexity would be O(k log n) rather than O(k n) (because we call our O(n) scan, k times)
+# Above was what we worked with along with some scratch code as it seemed simple enough and he agreed with. 
+# The problem came with the follow up, he asked what if the stock array was updated everyday, 
+# how could we improve the time complexity? I could not for the life of me figure it out and eventually 
+# he told me that we could use a BST to find the lowest and the max in O(1) time (we can use set in c++ as it is implemented as a BST). 
+# Since inserting an entry would only be O(log n), the total time complexity would be O(k log n) rather than O(k n) (because we call our O(n) scan, k times)
 
 
 # I actually think I did good in the whole interview except this part, I spaced out and accidently said that I forgot what a BST was LMAOO.
@@ -8,18 +12,49 @@
 
 # https://leetcode.com/problems/validate-binary-search-tree/
 # This one was very straight forward.
-
-
+def validateBinarySearchTree(root):
+    if not root:
+        return None
+    def valid(root, left, right):
+        if not root:
+            return True
+        if not (left < root.val < right):
+            return False
+        left = valid(root.left, left, root.val)
+        right = valid(root.right, root.val, right)
+        return left and right
+    return valid(root, float("-inf"), float("inf"))
+#Time complexity: O(n), n is the number of nodes. 
+#Space complexity: O(logn) for balanced tree. O(n) is for skewed tree. 
 #Q2:
 """
 Round 2:
-Interviewer was a little straight forward but still nice. Same format, 10 minute resume lookover then technical. He only asked me one question.
-
+Interviewer was a little straight forward but still nice. Same format, 10 minute resume lookover then technical. He only asked me one question
 
 Trending Stock
-We mainly had discussion about the data structures used and really hammered down on the time complexity and how we could improve it. I decided to use one hash table for count, and a vector<vector> which would hold the frequent companies and pop off when we return. We ended up talking about this the majority of the time and I did not have the chance to code it out. A
-fter the interview, he told me that I would definitely be contacted by HR the day of or the next.
+We mainly had discussion about the data structures used and really hammered down on the time complexity and how we could improve it. 
+I decided to use one hash table for count, and a vector<vector> which would hold the frequent companies and pop off when we return.
+We ended up talking about this the majority of the time and I did not have the chance to code it out. 
+After the interview, he told me that I would definitely be contacted by HR the day of or the next.
 """
+#stocks = [ [BB, 100], [BB, 100], [TSLA, 500], [GGLE, 1]]
+import heapq
+def trendingStock(stocks):
+    if not stocks:
+        return 0 #there is no trending stock at all
+    d = {}
+    for company, stock in stocks:
+        if company in d:
+            d[company]+=1
+        else:
+            d[company] = 1
+    d = sorted(d.items(), key=lambda x:x[1])
+    print(d[0]) #BB
+#time complexity: O(n)
+#space complexity: O(n)
+
+
+
 
 #Q3:
 """
@@ -57,12 +92,8 @@ was able to come up with anO(M*N) + O(Nlog(N))solution where M being the size of
 #Q5:
 """
 Given a collection of intervals, return a maximal set of non-overlapping intervals while prioritising the longer intervals.
-
-
 input - (1,5),(2,7),(11,18)
 output - (11, 18), (2, 7)
-
-
 Any ideas?
 """
 
@@ -92,8 +123,10 @@ most_traded(5)
 #Q7:
 """
 Merge intervals
+
 Given a buffer that contains multiple messages, parse the buffer and process each message.
-When an exchange sends several messages over a TCP socket, they can be concatenated when performing the read. This is solved by parsing the buffer, and splitting in to multiple messages for each process call.
+When an exchange sends several messages over a TCP socket, they can be concatenated when performing the read. 
+This is solved by parsing the buffer, and splitting in to multiple messages for each process call.
 Please implement a packetize function that takes a constant char* and size_t:
 void packetize(const char *data, size_t length);
 This function can be a member function if necessary.
@@ -101,19 +134,77 @@ The packetize function should call a process function, with signature:
 void process(const char *data, size_t length);
 
 
-Given data buffer may contain incomplete packet, which may continue in the next call to packetize. At the same time, buffer may contain multiple packets as well, in which case all of the packets must be collected and process should be called for each one.
+Given data buffer may contain incomplete packet, which may continue in the next call to packetize. 
+At the same time, buffer may contain multiple packets as well, in which case all of the packets must be collected and process should be called for each one.
 """
 
 #Q8:
 """
 Phone Interview - Welch Dictionary
-Onsite interview 1 - Given source and target print all paths .
-
-
-I coded the solution in the onsite round and even answered the OOPS related question and how to optimise the code and the underlying implementation ragarding unordered map and ordered map with the time complexity.
-Don't know where it went wrong. One problem that I had was that the accent of the interviewer was very thick so sommunication was a bit difficult.
 """
+# LZW Compression
+def lzw_compress(input_string):
+    # Initialize dictionary with single characters
+    dictionary = {chr(i): i for i in range(256)}  # 256 ASCII characters
+    current_code = 256  # The next available code
+    result = []
+    w = ""
+    
+    for c in input_string:
+        wc = w + c
+        if wc in dictionary:
+            w = wc
+        else:
+            result.append(dictionary[w])
+            dictionary[wc] = current_code
+            current_code += 1
+            w = c
+    
+    # Output the code for the last string
+    if w:
+        result.append(dictionary[w])
+    
+    return result
 
+# LZW Decompression
+def lzw_decompress(compressed_data):
+    # Initialize dictionary with single characters
+    dictionary = {i: chr(i) for i in range(256)}
+    current_code = 256
+    w = chr(compressed_data[0])
+    result = [w]
+    
+    for code in compressed_data[1:]:
+        if code in dictionary:
+            entry = dictionary[code]
+        elif code == current_code:
+            entry = w + w[0]
+        result.append(entry)
+        
+        # Add w+entry to the dictionary
+        dictionary[current_code] = w + entry[0]
+        current_code += 1
+        w = entry
+    
+    return "".join(result)
+
+# Example usage:
+input_string = "ABABABABA"
+compressed_data = lzw_compress(input_string)
+print("Compressed Data:", compressed_data)
+
+decompressed_data = lzw_decompress(compressed_data)
+print("Decompressed Data:", decompressed_data)
+
+"""
+Onsite interview 1 - Given source and target print all paths .
+I coded the solution in the onsite round and even answered the OOPS related question and how to optimise the code and 
+the underlying implementation ragarding unordered map and ordered map with the time complexity.
+"""
+def pathsToTarget(source, target):
+    pass
+#ordered map?
+#un-ordered map?
 #Q9:
 """
 You are given a list of stock exchange along with startTime and endTime in which these exchanges operate.
