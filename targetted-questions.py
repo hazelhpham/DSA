@@ -1,3 +1,7 @@
+# You are tasked with analyzing the potential space in a cityscape outlined by a series of skyscrapers. 
+# Each skyscraper's height is represented by an element in the array cityLine, where the width of each skyscraper is consistently 1, and they are placed directly adjacent to each other along a road with no gaps. 
+# Your mission is to determine the largest square area that can fit within this row of skyscrapers.
+# ***** VARIATION OF LARGEST AREA HISTOGRAM *********
 # Design an auto correct system like on Apple
 def autocorrect(dictionary, input_word):
     def is_one_edit_away(word1, word2):
@@ -48,8 +52,8 @@ print(autocorrect(dictionary, input_word))  # Output: "cat"
 
 
 """
-The main idea is to check if the word in the dictionary can be transformed into the input_word with just one edit. The types of allowed edits are:
-
+The main idea is to check if the word in the dictionary can be transformed into the input_word with just one edit. 
+The types of allowed edits are:
 Substitution (Changing one character to another at the same position).
 Insertion/Deletion (One word has an extra character compared to the other).
 Transposition (Two adjacent characters are swapped).

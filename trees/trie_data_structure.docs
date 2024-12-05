@@ -1,0 +1,137 @@
+Trie Data structure | Insert and Search
+
+- Trie data sturcture = tree-like data structure used
+for storing dynamic set of strings. 
+_ It is commonly used for efficient retrieval and storage
+of keys in large dataset. 
+- The structure supports operations such as insertion, search,
+and deletion of keys, making it a valuable tool in fields like
+Computer Science and Information level. 
+
+
+- the root node of a tree: represents an empty string. 
+- each edge emanating from a node signifies a specific character. 
+- the path from root node represents the prefix of a string
+stored in the Trie 
+
+
+# this is a structure to represent the English
+# alphabet
+class TrieNode:
+    def __init__(self):
+        self.child = [None]*26
+        self.wordEnd = False 
+
+#insertion in Trie Data structure
+
+* insert "and" visualization 
+
+        (Root)
+         |
+         |
+         |
+        (a)
+         |
+         |
+        (n)
+         |
+         |
+        (d)
+-> "and" 
+
+* insert "ant" after inserting "and"
+
+        (Root)
+         |
+         |
+         |
+        (a)
+         |
+         |
+        (n)--- (t) 
+         |
+         |
+        (d)
+
+- Inserting in a trie algorithm:
+    Starts with root node: the node has no character associated
+    with it and its wordEnd value is 0, indicating no complete word 
+    ends at this point. 
+
+    First character "a": calculate the index using 'a' - 'a' = 0. Check if 
+    child[0] is null. Since it is, create a TrieNode with the character
+    "a", wordEnd set to 0, and an empty array of pointers. 
+    Move to the new node. 
+
+    Second character "n": calculate the index using 'n' - 'a' = 13. 
+    Check if child[13] is null. It is, so create a new TrieNode with
+    the character "n", wordEnd set to 0, and an empty array of pointers.
+    Move to this new node. 
+
+    Third character "d": calculate the index using 'd' - 'a' = 3. Check
+    if child[3] is null. It is, so create a new TrieNode with the 
+    character 'd', wordEnd set to 1. (indicating the word "and" ends here)
+1) Time complexity:
+O( number of words * max Length of Word)
+
+
+2) Space complexity:
+O( number of words * max Length of Word)
+
+
+
+- When inserting "ant" into Trie data structure:
+    Start at the root node: 
+    Root node doesn’t contain any data but it keep track of every first character of every string that has been inserted.
+
+    First character “a”: 
+    Calculate the index using ‘a’ – ‘a’ = 0. Check if the child[0] is null. 
+    We already have the “a” node created from the previous insertion. so move to the existing “a” node.
+
+    First character “n”: 
+    Calculate the index using ‘n’ – ‘a’ = 13. Check if child[13] is null. 
+    It’s not, so move to the existing “n” node.
+
+    Second character “t”: 
+    Calculate the index using ‘t’ – ‘a’ = 19. Check if child[19] is null. 
+    It is, so create a new TrieNode with the character “t“, wordEnd set to 1 (indicating the word “ant” ends here).
+
+Search in Trie Data sturcture:
+
+Searching for a key in Trie data structure is similar to its insert operation. 
+However, it only compares the characters and moves down. 
+The search can terminate due to the end of a string or lack
+of key in the trie.
+
+Step by step:
+
+
+1. Start with root node. This is the starting point for
+all searches within the Trie. 
+
+
+2. Traverse the trie based on the characters on the word you are
+searching for. For each character, follow the corresponding branch
+in the Trie. If the branch does not exist, the word is not present
+in the Trie. 
+
+3. If you reach the end of the word and the wordEnd flag is set to 1, 
+the word has been found. 
+
+4. If you reach the end of the word and the wordEnd flag is set to 0, 
+the word is not present in the Trie, even though it shares a prefix with
+an existing word. 
+
+
+def insert_key(root, key):
+    curr = root
+    for c in key:
+        index = ord(c) - ord('a)
+"""
+'c' --> ord('c') - ord('a') = 2
+'a' --> ord('a') - ord('a') = 0
+'t' --> ord('t') - ord('a') = 19
+
+-> so c will be at index 2; a will be at index 0
+t will be at index 19
+"""

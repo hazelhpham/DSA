@@ -225,3 +225,4 @@ def intersection_binary_search_binarysearch(A, B):
 A = [1, 2, 3, 4]
 B = [2, 4, 6]
 print(intersection_binary_search_binarysearch(A, B))  # Output: [2, 4]
+

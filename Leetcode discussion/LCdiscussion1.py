@@ -4,15 +4,102 @@ class Deque:
     def __init__(self):
         pass
 # Q2: a binary search question
+def searchInRotatedArray(target, arr):
+    if not arr:
+        return -1
+    # [ 5 6 7 8 1 2]
+    #find 6
+    #check if it is in left sorted array
+    #check if it is in right sorted array 
+    l = 0
+    h = len(arr)-1
+    while l <= h:
+        mid = (l+h)//2
+        if arr[mid] == target:
+            return mid
+        if arr[l] <= arr[mid]:
+        #this left half is sorted
+            if arr[l] <= target <= arr[mid]:
+                h = mid - 1
+            else:
+                l = mid +1
+        elif arr[mid] <= arr[h]:
+            #
+            if arr[mid] <= target <= arr[h]:
+                l = mid + 1
+            else:
+                h = mid - 1 
+    return -1
+
+arr = [5, 6, 7, 1, 2]
+print("search in rotated sorted array", searchInRotatedArray(5, arr))
+
+
+# Follow-ups: Search in rotated sorted array II
+def searchInRotatedSortedArrayII(arr, target):
+    if not arr:
+        return -1
+    
+    l = 0
+    h = len(arr) - 1
+    
+    while l <= h:
+        mid = (l + h) // 2
+        
+        if arr[mid] == target:  # Target found
+            return mid
+        
+        # Handle the case where we can't determine the sorted half because of duplicates
+        if arr[l] == arr[mid] == arr[h]:
+            l += 1
+            h -= 1
+        # Left half is sorted
+        elif arr[l] <= arr[mid]:
+            if arr[l] <= target < arr[mid]:  # Target is in the left half
+                h = mid - 1
+            else:  # Target is in the right half
+                l = mid + 1
+        # Right half is sorted
+        else:
+            if arr[mid] < target <= arr[h]:  # Target is in the right half
+                l = mid + 1
+            else:  # Target is in the left half
+                h = mid - 1
+    
+    return -1  # Target not found
+
 # Q3: Dp problem dividing N oranges
 # --> LeetCode 279: Perfect Squares
+
+def countWaysToDivide(N, K):
+    # DP table to store results of subproblems
+    dp = [[0] * (K + 1) for _ in range(N + 1)]
+    
+    # Base Case: There is 1 way to divide 0 oranges into any number of parts
+    for i in range(K + 1):
+        dp[0][i] = 1
+
+    # Fill the DP table using the formula
+    for n in range(1, N + 1):
+        for k in range(1, K + 1):
+            # Ways to divide n oranges into k parts
+            dp[n][k] = dp[n-1][k-1] + dp[n-1][k]
+
+    return dp[N][K]
+
+# Example
+N = 5  # Number of oranges
+K = 2  # Number of parts to divide into
+print("Ways to divide oranges:", countWaysToDivide(N, K))
+
 
 
 # ********************************************************************************************************
 
-#Q1:  (2020)
+#Q1:(2020)
 #Given a welsh dictionary, sorted in welsh alphabetical order, 
-#and a list of words written in the welsh language, sort the list of words in welsh alphabetical order
+#and a list of words written in the welsh language, 
+# sort the list of words in welsh alphabetical order
 
 #SOLUTION 1:
 from collections import tuple
@@ -53,7 +140,8 @@ def comp(s):
 
 
 #Q2: Implement a method that sort words, but instead of using the normal alphabet a, b, c, ..., x, y, z, 
-# we have ch that goes between h and i in the sort order. So the alphabet becomes a, b, ... h, ch, i, ... x, y, z.
+# we have ch that goes between h and i in the sort order. 
+# So the alphabet becomes a, b, ... h, ch, i, ... x, y, z.
 # Example 1:
 # Inout: ["indigo", "charisma", "hotel"]
 # Output: ["hotel", "charisma", "indigo"]

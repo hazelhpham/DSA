@@ -6,16 +6,14 @@
 # Question 2:
 # Summary
 # Given one directional airport connections, devise a solution that can provide the route from Airport A to Airport B.
-
-
 # Implement 2 functions: one that adds a one-directional airport connection between 2 airports, and second that return out all possible routes between an origin and a destination. This could be done by implementing a class called AirMap that has two methods:
 
 
 # 1
 
 
-#   addConnection(start, destination)
-#   adds a ONE WAY connecting flight from start to destination
+# addConnection(start, destination)
+# adds a ONE WAY connecting flight from start to destination
 # 2
 
 

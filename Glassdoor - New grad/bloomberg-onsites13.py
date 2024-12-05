@@ -1,10 +1,23 @@
-#1) Identify the parent child relationship among the following rows. Parent row: any row which can be represented by summation of the consecutive rows following it. (If the consecutive row is a Parent then it's children may be collapsed/skipped during summation. 
-# 2) Question 1: Given 4 random generated numbers from 1-10, write a program to decide whether it is viable to use operations (limited in +, -, *, and /) on each and every number exactly once to generate result 24.
+#1) Identify the parent child relationship among the following rows.
+#  Parent row: any row which can be represented by summation of the consecutive rows following it. 
+# (If the consecutive row is a Parent then it's children may be collapsed/skipped during summation. 
+# 2) Question 1: Given 4 random generated numbers from 1-10, 
+# write a program to decide whether it is viable to use operations (limited in +, -, *, and /) 
+# on each and every number exactly once to generate result 24.
 
 
 """
-LC #1, #133, #139, #1396, Vending Machine Object Oriented Design, and a question involving some unintelligible, 
+LC #1, #133, #139, #1396, 
+Design underground system
+Word break
+Clone graph
+
+a question involving some unintelligible, 
 vague instructions for refactoring an "AppStoreEntry" class.
+"""
+
+"""
+Vending Machine Object Oriented Design 
 """
 
 

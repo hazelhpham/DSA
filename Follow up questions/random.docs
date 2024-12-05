@@ -20,3 +20,50 @@ while my_list:
     shuffled_list.append(new_element)
     my_list.remove(new_element)
 print(shuffled_list)
+
+
+
+
+NO BUILT IN RANDOM FUNCTION
+
+
+class CustomRNG:
+    def __init__(self, seed, a=1664525, c=1013904223, m=2**32):
+        self.state = seed
+        self.a = a
+        self.c = c
+        self.m = m
+
+    def next(self):
+        # Generate next random number
+        self.state = (self.a * self.state + self.c) % self.m
+        return self.state
+
+    def next_int(self, lower, upper):
+        # Generate a random integer between lower and upper (inclusive)
+        return lower + (self.next() % (upper - lower + 1))
+
+
+def swap_elements(arr, index_lower, index_upper, rng):
+    # Generate two random indices in the range [index_lower, index_upper]
+    left = rng.next_int(index_lower, index_upper)
+    right = rng.next_int(index_lower, index_upper)
+    
+    # Swap the elements at these indices
+    arr[left], arr[right] = arr[right], arr[left]
+    
+    return arr
+
+
+# Example Usage
+seed = 42  # Seed for RNG (can be any integer)
+rng = CustomRNG(seed)
+
+arr = [1, 2, 3, 4, 5]  # Example array
+index_lower = 1  # Lower bound for index
+index_upper = 3  # Upper bound for index
+
+# Swap two elements randomly within the given index range
+swapped_arr = swap_elements(arr, index_lower, index_upper, rng)
+
+print("Swapped Array:", swapped_arr)

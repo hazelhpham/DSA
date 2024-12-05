@@ -75,7 +75,9 @@ def isInterleave(s1, s2, s3):
 """
 Given some numbers [3,5,7,8,10], and interval list : [1,6,15] , they wanted to know how many numbers occur between each interval . 
 The answer for this example will be : [2,3] i.e [1,6] -> [3,5] and [6,15] -> [7,8,10].
-I clarified the interval assumptions. the boundaries inclusivity & exclusivity. I gave a binary search related answer, after sorting out the numbers. Collaborated perfectly during the entire time.
+I clarified the interval assumptions.
+the boundaries inclusivity & exclusivity. I gave a binary search related answer, after sorting out the numbers. 
+Collaborated perfectly during the entire time.
 The Solution I coded out :
 For each element in intervals list , using Binary search get the index of element just less than or equal to the given element
 eg for intervals [1,6,15] : [-1,1,4]

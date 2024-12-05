@@ -1,0 +1,31 @@
+Let's use review the problem of Permutations/Combinations/
+Subsets, since they are quite similar to each other
+and there are some common strategies to solve them. 
+
+First, there solution space is quiet often pretty large:
+1. Permutations: N!
+2. Comnbinations: N! / (N-k)!*k!
+3. Subsets: 2^N, since each element count be absent or
+present
+
+
+There are generally 3 strategies to do this:
+1. iterative
+
+2. recursion / backtracking
+
+3. lexicographic generation based on the mapping between
+binary bitmasks and the corresponding permutations / combinations /
+subsets
+--> 3rd method could be a good candidate for the interview because it simplifies
+the problem to the generation of binary numbers, therefore it is easy
+to implement and verify that no solution is missing
+
+
+
+Approach 1: Cascading
+
+Let's start from an empty subset in the output list. 
+At each step, one takes a new integer into consideration
+and generates new subsets from exisitng ones. 
+

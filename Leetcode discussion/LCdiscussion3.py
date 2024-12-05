@@ -1,17 +1,3 @@
-#Q1:
-# Given a list of operation hour for each stock exchange, validate if the customer can send a trading order during the input hour.Design a function to test if selected banks collective trading hours cover the duration of the order without any gaps.
-# Operation hours
-# 09:00-16:00 Royal Bank of Scotland
-# 11:00-17:00 Morgan Stanley
-# ....
- 
-# Test case #1 - expected result: SUCCESS
-# 10:00-17:00
-
-# Test case #2 - expected result: FAILURE
-# 15:00-21:00 
-
-
 #Q2:
 """
 # Test case1

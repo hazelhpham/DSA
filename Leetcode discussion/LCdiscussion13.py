@@ -3,8 +3,9 @@
 # Above was what we worked with along with some scratch code as it seemed simple enough and he agreed with. 
 # The problem came with the follow up, he asked what if the stock array was updated everyday, 
 # how could we improve the time complexity? I could not for the life of me figure it out and eventually 
-# he told me that we could use a BST to find the lowest and the max in O(1) time (we can use set in c++ as it is implemented as a BST). 
-# Since inserting an entry would only be O(log n), the total time complexity would be O(k log n) rather than O(k n) (because we call our O(n) scan, k times)
+# he told me that we could use a BST to find the lowest and the max in O(1) time 
+# Since inserting an entry would only be O(log n), 
+# the total time complexity would be O(k log n) rather than O(k n) (because we call our O(n) scan, k times)
 
 
 # I actually think I did good in the whole interview except this part, I spaced out and accidently said that I forgot what a BST was LMAOO.
@@ -74,12 +75,7 @@ You are given a custome alphabets that could contain alphabets with two characte
 
 custom_alphabet = {"A", "AA", "B", "CC", "D" "DE", "E", "TD", "F", "GAC" "GG", "HA", "II", "J", "KK", "L",  "MM", "N", "O", "P", "PL", "QQ", "R", "SS", "T", "UU", "V", "WW", "X", "YY", "Z"}
 the list you are given to sort cantains strings formulated by the above alphabets.
-
-
 Example 1:
-
-
-
 given_list = [ "AAB", "AB"]
 
 output = ["AB", "AAB"]
@@ -100,8 +96,6 @@ Any ideas?
 #Q6:
 """
 What's the most efficient solution to implement the two below functions? Any ideas?
-
-
 execute_trade(ticker,volume)
 most_traded(n)
 execute_trade('IBM',600)
@@ -209,17 +203,14 @@ def pathsToTarget(source, target):
 """
 You are given a list of stock exchange along with startTime and endTime in which these exchanges operate.
 0 <= startTime, endTime <= 23
-
-
 [
 	['Exchange A', 2, 7], 
 	['Exchange C', 11, 17], 
 	['Exchange B', 9, 16],
 	['Exchange D',14, 20]
 ]
-Then, given a list of buy/sell orders which need to be executed in the given timeframe you need to find out what all orders can be served with atleast 1 exchange.
-
-
+Then, given a list of buy/sell orders which need to be executed 
+in the given timeframe you need to find out what all orders can be served with atleast 1 exchange.
 [
 	['Order 1', '3', '6'],
 	['Order 2', '9', '12'],
@@ -227,6 +218,89 @@ Then, given a list of buy/sell orders which need to be executed in the given tim
 ]
 So in this case Order 1 and 2 can be served but 3 cannot be served by any exchange.
 
-
 Follow-up = What if some exchanges operate from night to morning, ex - ['Exchange X', 23, 5]. Same thing with orders.
 """
+
+def can_serve_orders(exchanges, orders):
+    results = []
+    for order in orders:
+        order_name, order_start, order_end = order[0], int(order[1]), int(order[2])
+        can_serve = False
+        
+        for exchange in exchanges:
+            exchange_name, exchange_start, exchange_end = exchange[0], exchange[1], exchange[2]
+            
+            # Check for overlap
+            if order_start <= exchange_end and order_end >= exchange_start:
+                can_serve = True
+                break
+        
+        results.append((order_name, can_serve))
+    return results
+
+# Example Inputs
+exchanges = [['Exchange A', 2, 7], 
+             ['Exchange C', 11, 17], 
+             ['Exchange B', 9, 16],
+             ['Exchange D', 14, 20]]
+
+orders = [['Order 1', '3', '6'], 
+          ['Order 2', '9', '12'], 
+          ['Order 3', '21', '22']]
+
+# Run the function
+results = can_serve_orders(exchanges, orders)
+for order, status in results:
+    print(f"{order} can be served: {status}")
+
+
+def normalize_intervals(start, end):
+    if start <= end:
+        return [(start, end)]
+    else:  # Spans midnight
+        return [(start, 23), (0, end)]
+
+def can_serve_orders_with_night_shifts(exchanges, orders):
+    results = []
+    
+    # Normalize exchange intervals
+    normalized_exchanges = []
+    for exchange in exchanges:
+        name, start, end = exchange[0], exchange[1], exchange[2]
+        intervals = normalize_intervals(start, end)
+        for interval in intervals:
+            normalized_exchanges.append((name, interval[0], interval[1]))
+    
+    # Check orders
+    for order in orders:
+        order_name, order_start, order_end = order[0], int(order[1]), int(order[2])
+        order_intervals = normalize_intervals(order_start, order_end)
+        can_serve = False
+        
+        for order_interval in order_intervals:
+            for exchange_name, exchange_start, exchange_end in normalized_exchanges:
+                if order_interval[0] <= exchange_end and order_interval[1] >= exchange_start:
+                    can_serve = True
+                    break
+            if can_serve:
+                break
+        
+        results.append((order_name, can_serve))
+    return results
+
+# Example Inputs with Night Shifts
+exchanges = [['Exchange A', 2, 7], 
+             ['Exchange C', 11, 17], 
+             ['Exchange B', 9, 16],
+             ['Exchange D', 14, 20],
+             ['Exchange X', 23, 5]]
+
+orders = [['Order 1', '3', '6'], 
+          ['Order 2', '9', '12'], 
+          ['Order 3', '21', '22'], 
+          ['Order 4', '23', '2']]
+
+# Run the function
+results = can_serve_orders_with_night_shifts(exchanges, orders)
+for order, status in results:
+    print(f"{order} can be served: {status}")
