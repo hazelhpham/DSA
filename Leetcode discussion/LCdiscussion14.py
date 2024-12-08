@@ -4,7 +4,8 @@
 # b) calculateTotalCost
 # c) calculateTotalCostWithVAT
 # d) calculateCostExcluding - can't remember the exact criteria to exclude
-# The interviewer took a good amount of time to explain the problem. Because there were so many classes like Customer, Job, WorkItem, Motorbike etc. I managed to finish a) and b). 
+# The interviewer took a good amount of time to explain the problem. 
+# Because there were so many classes like Customer, Job, WorkItem, Motorbike etc. I managed to finish a) and b). 
 # Explained my solution for c) and d). I didn't code c and d (as we were out of time). 
 # I was out of time because there were so much discussion around first two methods (though I coded both of them real quick and tested).
 #this is SSE

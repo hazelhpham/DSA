@@ -128,6 +128,29 @@ def findOasisWithObstacles(matrix, gas):
 # Preparing for topics such as graphs and dp would be sufficient
 
 #Q5: uncompress a compressed string.
+def decode_string(s: str) -> str:
+    stack = []
+    current_string = ""
+    current_num = 0
+
+    for char in s:
+        if char.isdigit():
+            # Build the number (in case it's multiple digits like "12" or "23")
+            current_num = current_num * 10 + int(char)
+        elif char == '[':
+            # Push the current string and current number to the stack
+            stack.append((current_string, current_num))
+            current_string = ""
+            current_num = 0
+        elif char == ']':
+            # Pop from the stack to get the previous string and repeat count
+            prev_string, repeat_count = stack.pop()
+            current_string = prev_string + current_string * repeat_count
+        else:
+            # Add characters to the current string
+            current_string += char
+
+    return current_string
 
 #Q6: Asked about tree, multiple sorting algorithms. How to seek to a desired place in a
 # very large file on disk not able to load to memory at once

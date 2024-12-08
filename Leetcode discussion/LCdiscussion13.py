@@ -7,8 +7,22 @@
 # Since inserting an entry would only be O(log n), 
 # the total time complexity would be O(k log n) rather than O(k n) (because we call our O(n) scan, k times)
 
+def stock_price_range(prices, k):
+    result = []
+    for i in range(len(prices)):
+        start = max(0, i - k + 1)
+        window = prices[start:i + 1]
+        result.append((min(window), max(window)))
+    return result
 
-# I actually think I did good in the whole interview except this part, I spaced out and accidently said that I forgot what a BST was LMAOO.
+# Example
+prices = [10, 20, 5, 15, 30, 25]
+k = 3
+print(stock_price_range(prices, k))
+# Output: [(10, 10), (10, 20), (5, 20), (5, 15), (5, 30), (15, 30)]
+
+
+# I spaced out and accidently said that I forgot what a BST was LMAOO.
 
 
 # https://leetcode.com/problems/validate-binary-search-tree/
@@ -70,24 +84,25 @@ You can traverse the added elements in the order they were inserted.
 
 #Q4:
 """
-You are given a custome alphabets that could contain alphabets with two characters or three characters in one letter of the alphabets. sort the given strings lexicographicaly based on the custome alphabet.
-
-
-custom_alphabet = {"A", "AA", "B", "CC", "D" "DE", "E", "TD", "F", "GAC" "GG", "HA", "II", "J", "KK", "L",  "MM", "N", "O", "P", "PL", "QQ", "R", "SS", "T", "UU", "V", "WW", "X", "YY", "Z"}
+You are given a custome alphabets that could contain alphabets with two characters 
+or three characters in one letter of the alphabets. sort the given strings lexicographicaly based on the custome alphabet.
+custom_alphabet = {"A", "AA", "B", "CC", "D" "DE", "E", "TD", "F", "GAC" "GG", "HA", "II", "J", "KK", "L",  "MM", "N", "O", 
+"P", "PL", "QQ", "R", "SS", "T", "UU", "V", "WW", "X", "YY", "Z"}
 the list you are given to sort cantains strings formulated by the above alphabets.
 Example 1:
 given_list = [ "AAB", "AB"]
 
 output = ["AB", "AAB"]
-in the strings you have to give priority to letters in the alphabets with more characters like if there is "AA"in the string you should not say it is formed by twoAs instead consider it as one letter as"AA"since it exists in the alphabet.
-
-
-was able to come up with anO(M*N) + O(Nlog(N))solution where M being the size of the strings and N being the size of the list. And the interviewer seemd to agree on the solution that I proposed and I am waiting for a feedback.
+in the strings you have to give priority to letters in the alphabets with more characters like if there is "AA"
+in the string you should not say it is formed by twoAs instead consider it as one letter as"AA"since it exists in the alphabet.
+was able to come up with anO(M*N) + O(Nlog(N))solution where M being the size of the strings and N being the size of the list. 
+And the interviewer seemd to agree on the solution that I proposed and I am waiting for a feedback.
 """
 
 #Q5:
 """
-Given a collection of intervals, return a maximal set of non-overlapping intervals while prioritising the longer intervals.
+Given a collection of intervals, 
+return a maximal set of non-overlapping intervals while prioritising the longer intervals.
 input - (1,5),(2,7),(11,18)
 output - (11, 18), (2, 7)
 Any ideas?

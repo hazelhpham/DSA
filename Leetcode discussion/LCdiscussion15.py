@@ -30,7 +30,8 @@ I do not understand why anyone would be unhappy with that. The interviewer might
 
 
 
-You are right that they are no difference if OP created tuple with frequency and character then sorting by frequency but I think OP did not notice it and said O(NlogN) where N is the length of the string. And the interviewer may not fully understand as well. Hence the miscommunication from both side.
+You are right that they are no difference if OP created tuple with frequency and character then sorting by frequency but I think OP did not notice it and said O(NlogN) where N is the length of the string. 
+And the interviewer may not fully understand as well. Hence the miscommunication from both side.
 
 
 

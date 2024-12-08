@@ -1,0 +1,25 @@
+Shallow Copy
+- A shallow copy creates a new object but does not recursively copy the objects contained within it. Instead, it copies references to the original objects.
+- If the original object contains mutable objects (like a list or dictionary), changes made to those mutable objects will reflect in both the original and 
+the copy because they share references to the same inner objects.
+- However, changes to the outer object itself (like reassigning the variable to point to a new object) do not affect the copy.
+
+
+
+Deep Copy
+- A deep copy creates a new object and recursively copies all objects contained within it. 
+- This means the new object is completely independent of the original object, with no shared references.
+Changes made to the original object or its nested objects do not affect the deep copy, and vice versa.
+Application to the Problem
+In Copy List with Random Pointer, the goal is to create a deep copy of a linked list where:
+
+Each node has a val, a next pointer to the next node, and a random pointer to any node (or null).
+The new list must not share any references with the original list.
+Here's why:
+
+If you only create a shallow copy, the next and random pointers in the new list would still point to the nodes in the original list. Any changes to those nodes in the original list would also reflect in the copied list.
+A deep copy ensures that every node in the new list is completely independent. Changes to the original list (e.g., modifying random or next pointers) will not affect the copied list.
+To Summarize
+Shallow Copy: The copied object shares references with the original, so changes to mutable parts of the original can affect the copy.
+Deep Copy: The copied object is entirely independent, so changes to the original object (or its nested parts) do not affect the copy.
+In your problem, you're aiming for a deep copy, meaning that changes to the original list (nodes, next, or random) should not affect the copied list.

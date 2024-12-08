@@ -1,12 +1,7 @@
 #Q1:
-# I joined in the Hackerrank code editor, turned on my video. Interviewer turned 5 minutes late and called me on my cell later. Interview started 10 minutes late.
-# He did not introduce himself and straight up jumped to my resume. I could not see the interviewer as he did not turn on his video.
-# After telling him about one of my projects, he copy-pasted the interview question.
 
-
-# Question was to delete a node from BST, given the key and return the updated key in its place. He used the term 'root' in the question which was not the correct term.
-
-# Anyway, he was not expecting compiled code - asked me to draw up the solution and he wants to see my logic behind.
+# Question was to delete a node from BST, given the key and return the updated key in its place. 
+# He used the term 'root' in the question which was not the correct term.
 
 # I had seen the question that morning itself so I was pretty confident in answering it.
 
@@ -45,7 +40,9 @@ dict={when, what, whatthen, whatnow}, input="wonthaw", expected output= "whatnow
 
 #Q4:
 """
-Marketdata prices are stored sequentially by day. Determine how many days it takes for the price to increase. If there is no increase, the default shall be -1. The interviewer specified a List is received, and the output must be an array of ints.
+Marketdata prices are stored sequentially by day. 
+Determine how many days it takes for the price to increase. 
+If there is no increase, the default shall be -1. The interviewer specified a List is received, and the output must be an array of ints.
 
 
 """

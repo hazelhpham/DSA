@@ -60,7 +60,8 @@ Second Problem: Word Break ii
 
 #Q3:
 """
-Given a sorted array of n elements, possibly with duplicates, find the number of occurrences of the target element.
+Given a sorted array of n elements, possibly with duplicates, 
+find the number of occurrences of the target element.
 
 
 Example 1:
@@ -109,13 +110,62 @@ add(8) -> [7, 3, 1, 2, 8]: maxValue=8, maxNeighborsValue=10
 
 
 Solution:
-I came up to solve to first four functions in O(1). I used an arrayList to store the elements (to keep its order while insertion), and I used a LinkedHashMap to store the element as a key, and its occurrences as a value (that way, I kept the order to see which element is deleted, and I kept if maximum value should be modified -> takes the second last element in the map). That way, all functions have complexity O(1).
+I came up to solve to first four functions in O(1). 
+I used an arrayList to store the elements (to keep its order while insertion), 
+and I used a LinkedHashMap to store the element as a key, and its occurrences as a value 
+(that way, I kept the order to see which element is deleted, and I kept if maximum value should be modified -> takes the second last element in the map). That way, all functions have complexity O(1).
 
 
 But the fifth function is still unclear for me!
 
 
 """
+from collections import deque
+
+class IntegerCollection:
+    def __init__(self):
+        self.elements = deque()  # To store elements in insertion order
+        self.max_stack = []  # Stack to track maximum elements
+        self.neighbour_max_stack = []  # Stack to track max of neighbors
+
+    def add(self, integer: int):
+        """Add a new integer to the collection."""
+        self.elements.append(integer)
+        
+        # Update max_stack
+        if not self.max_stack or integer >= self.max_stack[-1]:
+            self.max_stack.append(integer)
+        else:
+            self.max_stack.append(self.max_stack[-1])
+
+        # Update neighbour_max_stack
+        if len(self.elements) > 1:
+            last = self.elements[-2]  # Second to last element
+            current_max = max(last + integer, self.neighbour_max_stack[-1] if self.neighbour_max_stack else float('-inf'))
+            self.neighbour_max_stack.append(current_max)
+        else:
+            self.neighbour_max_stack.append(None)  # Not enough for a pair
+
+    def getAll(self):
+        """Return all elements in the same insertion order."""
+        return list(self.elements)
+
+    def deleteLast(self):
+        """Delete the last inserted element."""
+        if self.elements:
+            self.elements.pop()
+            self.max_stack.pop()
+            self.neighbour_max_stack.pop()
+
+    def getMaximum(self):
+        """Return the maximum value of all elements."""
+        return self.max_stack[-1] if self.max_stack else None
+
+    def getMaximumNeighbourValues(self):
+        """Return the maximum value of two consecutive elements."""
+        if len(self.elements) < 2:
+            return None
+        return self.neighbour_max_stack[-1]
 
 #Q5:
 """

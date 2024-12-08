@@ -3,8 +3,11 @@
 #Q1: https://leetcode.com/discuss/interview-question/125015/first-non-repeating-character-in-a-string
 #Q2: Similar to Designing an Ordered Stream
 
-#Q3: Variation of Number of Island questions, with some followups such as -> if we consider diagonal as well, or if its a rectangle, etc.
-#Q4: Variation of merge intervals, having data of multiple banks, on which the bank resume functioning, we need to find the interval for which the particular transaction will be successful.
+#Q3: Variation of Number of Island questions, with some followups such as 
+# -> if we consider diagonal as well, or if its a rectangle, etc.
+
+#Q4: Variation of merge intervals, having data of multiple banks, 
+# on which the bank resume functioning, we need to find the interval for which the particular transaction will be successful.
 #Q5: Tech round 2 : Design round -> Similar to Twitter Feeds/ Facebook Feeds.
 #Q6: Tech round 3: Design round -> API Rate limiter
 

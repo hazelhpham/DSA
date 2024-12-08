@@ -19,10 +19,11 @@
 Onsite:
 Interview 1: Deep Copy stuff and pretty challenging follow ups, it isn't enough to go thru the tagged questions and know one solution, 
 make sure you know all solutions as well as think about follow ups they may ask such as how a change in the input data structure could affect your solution.
-
-
+"""
+"""
 Interview 2: Simpler questions but still had to dicuss multiple approaches.
- Simple question involving creating a graph and then seeing if there was a path from A -> B. Second question was a dp problem involving coins.
+Simple question involving creating a graph and then seeing if there was a path from A -> B. 
+Second question was a dp problem involving coins.
 """
 
 
@@ -59,14 +60,46 @@ Manager round. Design a system that allow users to retrieve stock info as fast a
 
 #Q6:
 """
-  - They were very open ended questions about optimizing query time for a bloomberg specific terminal function, and another one about designing a help system so that respondents can take care of problems if a part of the terminal/product crashes.
+- They were very open ended questions about optimizing query time for a bloomberg specific terminal function, 
+and another one about designing a help system so that respondents can take care of problems if a part of the terminal/product crashes.
 """
 
 #Q7:
 """
-- How would you implement autocomplete in a browser? Whats the Data Structure and Algorithm?
+- How would you implement autocomplete in a browser? 
+- Whats the Data Structure and Algorithm?
 """
+print("Question: How would you implement auto-complete in a browser? ")
+print("Answer: I would use Dictionary/Hash Map or probably a trie.")
+"""
+********** DATA STRUCTURE DEFINITION *********
+- A trie = a tree-like data structure that stores strings where nodes represent 
+characters. It's particularly efficient for searching prefixes because it allows us to traverse
+the structure character by character. 
 
+Advantages: 
+1. Autocomplete suggestions for a prefix can be found in O(k). where k is
+the length of the prefix. 
+2. Compact representation: Words with common prefixes share nodes, saving memory. 
+3. Easily extendable: Adding or removing words is straightforward. 
+- A dictionary is fine; a hash map could be used to map prefixes to a list of possible
+completions. However, this approach may consume more memory since prefixes would need
+to be explicitly stored. 
+"""
+"""
+********* ALGORITHM ***********
+1. Build a trie: 
+- insert word from dataset -> into the trie. 
+- optionally, store metadata at each node (e.g: word freq for ranking suggestions)
+2. search for prefix:
+- traverse the trie node by node, following chracters of the input 
+prefix. 
+- once the prefix is found, retrieve all words that brnach out from that
+node using DFS / BFS. 
+3. rank suggestions
+- rank suggestions based on criteria such as word freq, relevance, or recency
+
+"""
 #Q8:
 
 """

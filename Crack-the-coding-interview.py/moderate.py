@@ -1,3 +1,19 @@
+#Q1: Word count from a book
+from collections import Counter
+
+def preprocess_book(book: str):
+    words = book.lower().split()
+    return Counter(words)
+
+def get_word_frequency(word: str, word_count: Counter) -> int:
+    return word_count[word.lower()]
+
+# Example
+book = "This is a test. This test is only a test."
+word_count = preprocess_book(book)
+print(get_word_frequency("test", word_count))  # Output: 3
+
+
 #Q1: Living People: Given a list of people with their birth and death years,
 #  implement a method to compute the year with the most number of people alive.
 #  You may assume that all people were born between 1900 and 2000 (inclusive). 
