@@ -11,9 +11,24 @@
 # What interest you to work at Bloomberg?
 
 #Q3: Definitely use Cracking the Coding Interview for this one, some of the questions were straight out of the book. 
-# Q1: Perform and print level order traversal of a binary tree Q2: Add 2 numbers whose digits are stored in a linked list, i.e. add(1->2->3->4, 4->5->6->7) is equivalent to adding 1234 + 4567. 
+# Q1: Perform and print level order traversal of a binary tree 
+# Q2: Add 2 numbers whose digits are stored in a linked list, i.e. add(1->2->3->4, 4->5->6->7) is equivalent to adding 1234 + 4567. 
 # Q3: Print level at which node is in a binary tree 
 # Q4: Iterative Fibonacci
+def fib(n: int) -> int:
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    
+    return b
+
+# Example usage:
+print(fib(10))  # Output: 55 (The 
 
 # 1. In a big file of two very very long strings, delete the characters which they both have. 
 # 2. disjoint set questions

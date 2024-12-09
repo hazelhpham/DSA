@@ -16,25 +16,7 @@
 # Implementation of optimized solution (5 min)
 # Interviewer asked to walk through with 2 more examples and provide time/space complexity (5 min)
 
-#Q2:
-"""
-First Problem: A process tree has crashed and you are given a sequence of it's nodes in random order, 
-each representing a process and possible child(s). Each node has at most two child process. 
-Find the root process node
 
-
-Input:
-{5 : [], 1: [2, 3], 4 : [], 3: [6], 6 : [], 2 : [4, 5]}
-
-
-                        1
-                    /      \
-                2            3
-            /     \          / 
-            4     5         6
-Output: 1
-"""
-# For the first problem, the root node would be an ID that is not a child of any node -> definition of root node
 # Approach 1:
 
 
@@ -90,8 +72,7 @@ https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-
 
 #Q4:
 """
-Hi everyone,
-I had this problem on my interview with Bloomberg. It is easily solved in O(N), but it is required to solve it in O(1) (all following functions).
+
 
 
 Build your own data structure which does the following functions:
@@ -169,12 +150,9 @@ class IntegerCollection:
 
 #Q5:
 """
-The 1st round: Phone Call
+
 It was pretty easy got asked 2 questions, one similar to LRU cache
 2nd one similiar to Two sum find array pairs that add up to target value
-
-
-I was able to solve both and moved forward to the video interview
 
 
 2nd Round: Video Interview
@@ -182,7 +160,9 @@ I was able to solve both and moved forward to the video interview
 The coding questions,
 
 
-*Given a Subway system where the customer can swipe in his card to check in and swipe out his card to check out at destination station, get the average time needed to travel between any 2 stations. and I should save customer Id, create swipeIn and swipeOut functions and another to get the average
+*Given a Subway system where the customer can swipe in his card to check in 
+and swipe out his card to check out at destination station, get the average time needed to travel between any 2 stations. 
+and I should save customer Id, create swipeIn and swipeOut functions and another to get the average
 
 
 My main problem was that the interviewer didnt write the question or even a part of it, he just read it out loud really fast and ofcourse its a video call the connection isnt 100% so this for me ruined everything.
@@ -232,7 +212,8 @@ I told him that I can sort route to get the same value for station AB=BA, but he
 
 
 Other Questions which I didnt do well in:
-how does python store dictionaries? what key types are ok in python (I told him i only used strings and integers)
+how does python store dictionaries? 
+what key types are ok in python (I told him i only used strings and integers)
 
 
 Follow up Question
@@ -248,13 +229,11 @@ I know that overall I didnt do great, yet I got bumped from the rejection, I thi
 
 #Q6:
 """
-There was one question and hackerrank coderpad (I was expecting a proper hackerrank assessment)
-
-
 Question:
 
 
-'m' amount of oil can be purchased from 'n' companies. Every company has 'k' capacity of oil to be sold, you can take zero or many times the quantity offered by each company. Give the maximum number of combinations possible.
+'m' amount of oil can be purchased from 'n' companies. 
+Every company has 'k' capacity of oil to be sold, you can take zero or many times the quantity offered by each company. Give the maximum number of combinations possible.
 
 
 For examples:
@@ -271,17 +250,11 @@ Target: 60
 
 Number of Combinations: 4 {[10,50], [15,45], [20,40],[10,20,30]
 
-
-I was able solve the question by priting all combination but my count was not updating, I was debugging the code but he told he didn't know java at all so we can move on. I thought I would get through, but they rejected me.
-
-
-I hope this expereince might be useful for you!
-
-
 Approach, I took:
 
 
-I have generated multiples of all quantities in a list till the target amount. Then generated all possible subsets and for every subset, I was calculating sum of all elements in the subset. Later, compared sum with target, I have incremented count.
+I have generated multiples of all quantities in a list till the target amount.
+Then generated all possible subsets and for every subset, I was calculating sum of all elements in the subset. Later, compared sum with target, I have incremented count.
 
 
 public class Solution {

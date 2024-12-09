@@ -16,19 +16,39 @@ the edges would be val = a and the reverse way would be 1/a
 and then i would do bfs on the graph to find the "shortest" path
 2. 
 """
-from collections import defaultdict
-class Node():
-    def __init__(self, val):
-        self.val = val
-        self.children = []
-class CurrencyExchange():
+from collections import defaultdict, deque
+
+class CurrencyExchange:
     def __init__(self):
         self.graph = defaultdict(list)
-# ce.add("USD", "AUD", 1.5)  # 1 USD = 1.5 AUD
-# ce.add("AUD", "EUR", 0.75)  # 1 AUD = 0.75 EUR
+
     def add(self, from_curr, to_curr, rate):
+        # Add bidirectional edge
         self.graph[from_curr].append((to_curr, rate))
-        self.graph[to_curr].append((from_curr, 1/rate))
-    def exchange(self):
-        pass
+        self.graph[to_curr].append((from_curr, 1 / rate))
+
+    def exchange(self, start, end):
+        # If start or end currencies do not exist, return -1
+        if start not in self.graph or end not in self.graph:
+            return -1
+        
+        # BFS setup
+        queue = deque([(start, 1.0)])  # (current currency, cumulative rate)
+        visited = set()
+
+        while queue:
+            current, rate = queue.popleft()
+            if current == end:
+                return rate
+            
+            visited.add(current)
+
+            # Explore neighbors
+            for neighbor, edge_rate in self.graph[current]:
+                if neighbor not in visited:
+                    queue.append((neighbor, rate * edge_rate))
+        
+        # If no path found, return -1
+        return -1
+
         

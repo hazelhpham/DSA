@@ -14,8 +14,7 @@
 
 #Q7:
 """
-2. https://leetcode.com/problems/longest-substring-without-repeating-characters/
-Video Call:
+
 Round 1: Binary tree traversals : In Order, Post Order, Pre Order. 
 Queires like What is binary tree? 
 Difference between binary tree and binary search tree. 

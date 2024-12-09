@@ -4,6 +4,28 @@
 # 	* multiple by 2
 # 	* floor division by 3
 
+#i have done this;;
+#this is sort integers by power values 
+
+class Solution:
+    def getKth(self, lo: int, hi: int, k: int) -> int:
+        def getPow(num):
+            steps = 0
+            while num != 1:
+                if num %2 == 0:
+                    num = num / 2
+                    steps+=1
+                elif num %2 != 0:
+                    num = 3*num+1
+                    steps+=1
+            return steps
+        power_vals = {}
+        for num in range(lo,hi+1):
+            power_vals[num] = getPow(num)
+        power_vals = sorted(power_vals.items(), key = lambda x:x[1])
+        return power_vals[k - 1][0]  
+        #Return the number(not power)
+
 # Example 1:
 # # target = 1
 # # output: ""
@@ -45,7 +67,6 @@ we have just discussed different approaches to the problem and I drawed my solut
 
 #Q3:
 """
-I had this problem on my interview with Bloomberg.
 
 
 Design a mailbox which should do the two functions:
@@ -58,6 +79,40 @@ After I finished the requirements, he asked me to extend the code to provide the
 
 send an error message if a receiver doesn't exist.
 send one message to multiple users.
-The problem was very straighforward and easy. I was able to communicate my thoughts and ideas with the interviewer. But after I finished the interview, and I felt that I will proceed to the next stage, I realized that my code could be better and improved. I guess the time constraint of the interview, and the overall stress were playing against me.
-For example: (1) create a new class to save users, and make it a singelton class which has a set to store the users. (2) have a methods which validates if a user exists or not.
+The problem was very straighforward and easy. I was able to communicate my thoughts and ideas with the interviewer. But after I finished the interview, and I felt that I will proceed to the next stage, 
+I realized that my code could be better and improved. I guess the time constraint of the interview, and the overall stress were playing against me.
+For example: (1) create a new class to save users, and make it a singelton class which has a set to store the users. 
+(2) have a methods which validates if a user exists or not.
+"""
+class MailBox:
+    """
+    Mailbox class to send messages and retrieve message history.
+    """
+    def __init__(self):
+        self.user_manager = UserManager()  # Access the singleton user manager
+        self.user_messages = {}  # Map user_id -> list of messages
+
+    def send(self, message, user_ids):
+        for user_id in user_ids:
+            if not self.user_manager.validate_user(user_id):
+                print(f"Error: User {user_id} does not exist.")
+                continue
+
+            if user_id not in self.user_messages:
+                self.user_messages[user_id] = []
+            self.user_messages[user_id].append(message)
+
+    def message_history(self, user_id):
+        if not self.user_manager.validate_user(user_id):
+            print(f"Error: User {user_id} does not exist.")
+            return []
+        return self.user_messages.get(user_id, [])
+
+    def save_user(self, user_id):
+        self.user_manager.add_user(user_id)
+
+"""
+retrieve, save users with O(1) -> use both stack + dict
+get message history from a specific user -> use userId to access O(1)
+send one message to multiple users?
 """

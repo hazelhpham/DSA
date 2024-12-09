@@ -19,3 +19,33 @@
 
 # Input: coins = [1], amount = 0
 # Output: 0
+
+def coinChange(coins, amount):
+    memo = {}
+
+    def helper(remaining):
+        # Base cases
+        if remaining < 0:
+            return float('inf')  # Not possible to make a negative amount
+        if remaining == 0:
+            return 0  # No coins needed to make amount 0
+        if remaining in memo:
+            return memo[remaining]
+
+        # Recurrence relation: try every coin and take the minimum
+        min_coins = float('inf')
+        for coin in coins:
+            min_coins = min(min_coins, helper(remaining - coin) + 1)
+
+        memo[remaining] = min_coins
+        return min_coins
+
+    # Start with the full amount
+    result = helper(amount)
+    return result if result != float('inf') else -1
+
+# Examples
+print(coinChange([1, 2, 5], 11))  # Output: 3
+print(coinChange([2], 3))         # Output: -1
+print(coinChange([1], 0))         # Output: 0
+

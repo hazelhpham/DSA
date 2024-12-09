@@ -17,6 +17,7 @@ There are generally 3 strategies to do this:
 3. lexicographic generation based on the mapping between
 binary bitmasks and the corresponding permutations / combinations /
 subsets
+
 --> 3rd method could be a good candidate for the interview because it simplifies
 the problem to the generation of binary numbers, therefore it is easy
 to implement and verify that no solution is missing

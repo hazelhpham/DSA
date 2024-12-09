@@ -1,9 +1,5 @@
 # Remove ints from an array.
-
-
 # Example:
-
-
 # Input: array = [-8, 3, -5, 1, 51, 56, 0, -5, 29, 43, 78, 75, 32, 76, 73, 76], 
 # ranges = [[5, 8], [10, 13], [3, 6], [20, 25]]
 # Output: [-8, 3, -5, 29, 43, 76, 73, 76]
@@ -16,10 +12,6 @@ https://leetcode.com/problems/trapping-rain-water
 https://leetcode.com/problems/two-city-scheduling/
 https://leetcode.com/problems/add-two-numbers-ii
 https://leetcode.com/problems/word-search-ii
-"""
-
-"""
-https://leetcode.com/problems/evaluate-division/description/
 """
 
 """
@@ -107,21 +99,67 @@ greedy
 """
 https://leetcode.com/problems/design-an-ordered-stream/description/
 """
+class OrderedStream():
+    def __init__(self, capacity):
+        self.capacity = capacity 
+        self.array = [None] * self.capacity
+        self.pointer = 0
+# capacity = 5
+# insert 2
+# 
+    def insert(self, id, value):
+        #convert id from 1-indexed to 0-indexed
+        index = id - 1
+        #insert the value at the correct index
+        self.array[index] = value
+        #if the pointer isnt at this index, 
+        #return an empty list
+        if index != self.pointer:
+            return []
+        result =  []
+        while self.pointer < self.capacity and self.array[self.pointer] is not None:
+            result.append(self.array[self.pointer])
+            self.pointer+=1 #move the pointer forward
+        return result 
+
+
 
 
 """
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
-Given a linked list with 2 extra pointers backward and forward, return a boolean if the linked list is valid. A valid LL is when the backward pointer points to a node before it and the forward pointer points to a node after it.
-Virtual onsite was in December 2020
-1st Interview -
+Given a linked list with 2 extra pointers backward and forward, 
+return a boolean if the linked list is valid. 
+A valid LL is when the backward pointer points to a node before it and the forward pointer points to a node after it.
+"""
 
-
+"""
 https://leetcode.com/problems/min-stack/
-Given a collection of intervals, return a maximal set of non-overlapping intervals while prioritising the longer intervals.
+"""
+
+"""
+Given a collection of intervals, 
+return a maximal set of non-overlapping intervals while prioritising the longer intervals.
+
+- sort the intervals: sort based on their length (long interval first) 
+and then by their start time
+- greedy selection
+"""
+def maxNonOverlappingIntervals(intervals):
+    intervals = sorted(intervals, key = lambda x:(-x[1]+x[0], x[0]))    
+    result = []
+    last_end = -float("inf")
+    for start, end in intervals:
+        if start >= last_end:
+            result.append((start,end)) #select the interval
+            last_end = end #update the last end to this interval
+    return result
+intervals = [[1,10], [2,5], [4,9], [5,11], [1,100]]
+print(intervals)
+print(maxNonOverlappingIntervals(intervals))
+"""
 2nd Interview-
-
-
-https://leetcode.com/problems/all-paths-from-source-to-target/ [The given graph can have cycles though]
+https://leetcode.com/problems/all-paths-from-source-to-target/ 
+[The given graph can have cycles though]
 https://leetcode.com/problems/valid-parentheses/
 """
 

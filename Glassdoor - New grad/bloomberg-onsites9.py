@@ -79,19 +79,20 @@ print(find_consecutive_occurrences(string, words))
 # Consider the browser search where you type an URL. 
 # You need to keep track of the history and to print the most recent URLs the user searched. 
 # More or less LRU cache.
+# ---> i keep the URL in a node. 
 
 # Question 5
-# Custom Index Engine - Design and implementation
-
-# Question 6:
-# Finding Anagrams from a set of strings
+# Custom Index Engine
+# Design and implementation
 
 
 # Question 7:
-# 7.1 : Given a matrix filled with different integers and an entry point, count the number of connected points (adjacent up, down, left, right) 
+# 7.1 : Given a matrix filled with different integers and an entry point, 
+# count the number of connected points (adjacent up, down, left, right) 
 # with the same value as the entry point. 
 
-# 7.2: Box stacking problem without rotating sides. Do it using DP. Find all paths from a source to destination in a graph
+# 7.2: Box stacking problem without rotating sides. 
+# Do it using DP. Find all paths from a source to destination in a graph
 
 
 #Question 8:

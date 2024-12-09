@@ -30,3 +30,40 @@ def linear_probing(hash_table, value, table_size):
 --> for large datasets, chaining often works better
 because the hash table does not have to be re-sized as frequently,
 and you can use more efficient structures for linked list. 
+
+
+
+3. how does python store dictionaries? 
+Key Concepts
+Hash Table Structure:
+
+A dictionary is essentially a hash table.
+Each key in the dictionary is hashed using a hash function, which maps the key to an index in an array (called a hash table).
+The value is stored at this index.
+Buckets:
+
+The hash table consists of an array of buckets. Each bucket stores key-value pairs.
+If two keys hash to the same index (a collision), the dictionary resolves this using a technique like chaining (storing multiple key-value pairs in the same bucket).
+Hashing and Keys:
+
+Python uses the hash() function to compute a hash value for a key.
+Keys must be hashable, meaning their hash value should not change during their lifetime. Immutable types like int, str, and tuple are hashable. Mutable types like list and dict are not.
+Dynamic Resizing:
+
+Python dictionaries dynamically resize themselves when the load factor (number of items / number of buckets) becomes too high, usually around 2/3 full.
+During resizing, a new, larger hash table is created, and all existing key-value pairs are rehashed and moved to the new table.
+
+
+4. what key types are ok in python (I told him i only used strings and integers)
+the keys of a dictionary in Python must be immutable data structures, as they need to be hashable for efficient lookup and storage
+
+
+Advantages of Dictionary Storage:
+
+Fast Lookups:
+Dictionary operations like get and set typically have O(1) average-case time complexity due to the hash table design.
+Collisions or resizing can make the worst-case complexity O(n), but this happens rarely in practice.
+
+
+Memory Efficiency:
+While hash tables use extra memory for storage, Python dictionaries are optimized for performance, balancing memory usage and speed.

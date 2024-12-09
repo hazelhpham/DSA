@@ -41,22 +41,32 @@ inOrderTraversal(root)
 1. Valid palindrome 
 2. Next largest Number.
 """
+def nextLarger(nums):
+    result = [-1] * len(nums)  # Initialize result array with -1
+    stack = []  # Stack to store indices of elements
+
+    for i in range(len(nums) - 1, -1, -1):  # Traverse from right to left
+        # Pop elements smaller than the current element
+        while stack and nums[i] >= nums[stack[-1]]:
+            stack.pop()
+        
+        # If stack is not empty, the top element is the next largest
+        if stack:
+            result[i] = nums[stack[-1]]
+        
+        # Push current element index to the stack
+        stack.append(i)
+    
+    return result
+
+# Example usage:
+nums = [4, 5, 2, 10]
+print(nextLarger(nums))  # Output: [5, 10, 10, -1]
 
 #Q6:
 """
 Sort the Welsh alphabets using any language.
 """
-
-#Q7:
-"""
-how to remove a node with a target value in a linked list
-"""
-class Node():
-    def __init__(self, val):
-        self.val = val
-        self.next = None
-def removeFromLL(target):
-    pass
 
 #Q8:
 """
@@ -100,7 +110,8 @@ print(convert_integer_to_excel_column(300)) # Output: "KN"
 
 #Q9:
 """
-room allocation in an office according to timings, with a high number of employees and a low number of available rooms.
+room allocation in an office according to timings, 
+with a high number of employees and a low number of available rooms.
 """
 
 #Q10:

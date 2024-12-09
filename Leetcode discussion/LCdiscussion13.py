@@ -22,8 +22,6 @@ print(stock_price_range(prices, k))
 # Output: [(10, 10), (10, 20), (5, 20), (5, 15), (5, 30), (15, 30)]
 
 
-# I spaced out and accidently said that I forgot what a BST was LMAOO.
-
 
 # https://leetcode.com/problems/validate-binary-search-tree/
 # This one was very straight forward.

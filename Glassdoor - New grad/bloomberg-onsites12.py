@@ -7,6 +7,40 @@
 #Q3: flattening a tree
 
 #Q4: Maze problem seeing if you can reach the end within n steps.
+from collections import deque
+
+def canReachEnd(maze, start, end, n):
+    rows, cols = len(maze), len(maze[0])
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Right, Left, Down, Up
+    queue = deque([(start[0], start[1], 0)])  # (row, col, steps taken)
+    visited = set()
+    visited.add(tuple(start))
+
+    while queue:
+        row, col, steps = queue.popleft()
+        
+        # If we've reached the end and the steps are within the limit
+        if (row, col) == tuple(end) and steps <= n:
+            return True
+        
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            if 0 <= new_row < rows and 0 <= new_col < cols and maze[new_row][new_col] == 0 and (new_row, new_col) not in visited:
+                visited.add((new_row, new_col))
+                queue.append((new_row, new_col, steps + 1))
+    
+    return False  # If we can't reach the end within n steps
+
+# Example usage:
+maze = [
+    [0, 0, 0, 1],
+    [0, 1, 0, 0],
+    [0, 0, 0, 0],
+    [1, 0, 1, 0]
+]
+start = (0, 0)
+end = (3, 3)
+print(canReachEnd(maze, start, end, 5))  # Output: True
 
 
 #Q5:
@@ -50,7 +84,38 @@ Given an 2D matrix, find the matrix cell with the maximum number of matrix cells
 #Q12:
 """
 Final round coding - max overlapping meetings
+"""
+import heapq
 
+def maxOverlappingMeetings(intervals):
+    if not intervals:
+        return 0
+
+    events = []
+    
+    # Create events for all start and end times
+    for interval in intervals:
+        events.append((interval[0], 1))  # 1 represents start of a meeting
+        events.append((interval[1], -1))  # -1 represents end of a meeting
+    
+    # Sort the events
+    events.sort(key=lambda x: (x[0], x[1]))
+
+    max_overlap = 0
+    current_overlap = 0
+
+    # Traverse the events and calculate overlaps
+    for event in events:
+        current_overlap += event[1]
+        max_overlap = max(max_overlap, current_overlap)
+
+    return max_overlap
+
+# Example usage:
+intervals = [[0, 30], [5, 10], [15, 20], [10, 15]]
+print(maxOverlappingMeetings(intervals))  # Output: 3 (meetings overlapping between 5 and 15)
+
+"""
 Answer question
 Question 3
 
@@ -71,7 +136,13 @@ Given coins array and amount, find the minimum number of coins needed
 
 #Q15:
 """
-First Interviewer asked me a similar question to Evaluate Division Second Interviewer asked me two questions; Given a list of integers return them in sorted order based on frequency, & String to Integer (ATOI) Both interviewers asked me about a difficult problem (could be technical or not) that I have faced recently, Also Why Bloomberg?
+Evaluate Division 
+"""
+"""
+Second Interviewer asked me two questions; 
+Given a list of integers return them in sorted order based on frequency, 
+& String to Integer (ATOI) Both interviewers asked me about a difficult problem (could be technical or not) 
+that I have faced recently, Also Why Bloomberg?
 """
 
 
@@ -79,14 +150,48 @@ First Interviewer asked me a similar question to Evaluate Division Second Interv
 """
 Matrix multiplication for a very sparse large matrices
 """
+from collections import defaultdict
 
+def sparse_matrix_multiply(A, B):
+    """
+    Multiplies two sparse matrices A and B.
+    Input:
+      A, B - Dictionaries where keys are (row, col) and values are the elements.
+    Output:
+      Resultant sparse matrix C in the same dictionary format.
+    """
+    # Check dimensions
+    if not A or not B:
+        return {}
+
+    # Find dimensions of A and B
+    max_row_A = max(row for row, _ in A.keys())
+    max_col_B = max(col for _, col in B.keys())
+    
+    # Transpose B for easier access during multiplication
+    B_transposed = defaultdict(list)
+    for (row, col), value in B.items():
+        B_transposed[col].append((row, value))
+
+    # Resultant sparse matrix
+    C = defaultdict(float)
+
+    # Perform sparse multiplication
+    for (i, k), val_A in A.items():
+        if k in B_transposed:  # Check if column k of A exists in B
+            for j, val_B in B_transposed[k]:
+                C[(i, j)] += val_A * val_B
+
+    return dict(C)
 #Q17:
 """
-Asked to determine the text of the most nested parentheses A(B(C)) -> C Find all routes between two given nodes (e.g. A, D): A -> B B -> C B -> D C -> D A, B, C, D A, B, D
+Asked to determine the text of the most nested parentheses 
+A(B(C)) -> C Find all routes between two given nodes (e.g. A, D): A -> B B -> C B -> D C -> D A, B, C, D A, B, D
 """
 
 
 #q18:
 """
-You are asked to make a program, that will get message packets out of order. Write a class that will correctly log the sequence in order and wait if a number in the sequence has not been logged yet
+You are asked to make a program, that will get message packets out of order.
+ Write a class that will correctly log the sequence in order and wait if a number in the sequence has not been logged yet
 """
