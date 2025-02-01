@@ -1,7 +1,7 @@
-* There was an engineering manager , he asked some introductory questions , such as your experience and why Bloomberg?
+* There was an engineering manager , he asked some introductory questions , such as your experience and why company X?
 
 
-* Then he started with question where he drew a diagram , related to a realtime feature of bloomberg Terminal , where data is being fetched from exchange and processed by backend and then sent to receivers.
+* Then he started with question where he drew a diagram , related to a realtime feature of X , where data is being fetched from exchange and processed by backend and then sent to receivers.
 
 
 * Talked about Pub/Sub.
